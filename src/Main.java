@@ -9,20 +9,18 @@ public class Main {
         FictionBook book5 = new FictionBook("FB0002","Một thế giới dũng cảm", 35, "Aldous Huxley", "Khoa học viễn tưởng");
         FictionBook book6 = new FictionBook("FB0003", "Kiêu hãnh và định kiến", 32, "Jane Austen","Tiểu thuyết lãng mạng");
 
-        BookManager list = new BookManager();
-        list.add(book1);
-        list.add(book2);
-        list.add(book3);
-        list.add(book4);
-        list.add(book5);
-        list.add(book6);
+        BookManager bookManager = new BookManager();
+        bookManager.add(book1);
+        bookManager.add(book2);
+        bookManager.add(book3);
+        bookManager.add(book4);
+        bookManager.add(book5);
+        bookManager.add(book6);
 
         float totalPrice = 0;
 
-
-
         for(int i = 0; i < 6; i++){
-            totalPrice += list.bookList[i].price ;
+            totalPrice += bookManager.bookList[i].price ;
         }
 
         System.out.println("Tong gia tien tat ca sach la: " + totalPrice);
@@ -30,9 +28,9 @@ public class Main {
         int countJavaBook = 0;
 
         for(int i = 0; i < 6; i++){
-            boolean isProgramBook = list.bookList[i] instanceof ProgrammingBook;
+            boolean isProgramBook = bookManager.bookList[i] instanceof ProgrammingBook;
             if(isProgramBook){
-                boolean isJavaBook = ((ProgrammingBook) list.bookList[i]).language.equals("Java");
+                boolean isJavaBook = ((ProgrammingBook) bookManager.bookList[i]).language.equals("Java");
                 if(isJavaBook)
                     countJavaBook++;
             }
