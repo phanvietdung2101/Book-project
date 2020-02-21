@@ -9,28 +9,28 @@ public class Main {
         FictionBook book5 = new FictionBook("FB0002","Một thế giới dũng cảm", 35, "Aldous Huxley", "Khoa học viễn tưởng");
         FictionBook book6 = new FictionBook("FB0003", "Kiêu hãnh và định kiến", 32, "Jane Austen","Tiểu thuyết lãng mạng");
 
-        BookManager bookManager = new BookManager();
-        bookManager.add(book1);
-        bookManager.add(book2);
-        bookManager.add(book3);
-        bookManager.add(book4);
-        bookManager.add(book5);
-        bookManager.add(book6);
+//        BookManager bookManager = new BookManager();
+//        bookManager.add(book1);
+//        bookManager.add(book2);
+//        bookManager.add(book3);
+//        bookManager.add(book4);
+//        bookManager.add(book5);
+//        bookManager.add(book6);
 
         float totalPrice = 0;
 
-        for(int i = 0; i < 6; i++){
-            totalPrice += bookManager.bookList[i].price ;
+        for(int i = 0; i < Book.listIndex ;i++){
+            totalPrice += Book.bookList[i].price ;
         }
 
         System.out.println("Tong gia tien tat ca sach la: " + totalPrice);
 
         int countJavaBook = 0;
 
-        for(int i = 0; i < 6; i++){
-            boolean isProgramBook = bookManager.bookList[i] instanceof ProgrammingBook;
+        for(int i = 0; i < Book.listIndex; i++){
+            boolean isProgramBook = Book.bookList[i] instanceof ProgrammingBook;
             if(isProgramBook){
-                boolean isJavaBook = ((ProgrammingBook) bookManager.bookList[i]).language.equals("Java");
+                boolean isJavaBook = ((ProgrammingBook) Book.bookList[i]).language.equals("Java");
                 if(isJavaBook)
                     countJavaBook++;
             }
@@ -38,6 +38,6 @@ public class Main {
 
         System.out.println("Tong so sach viet ve Java la " + countJavaBook);
 
-//        System.out.println(Book.bookList[0].price);
+        System.out.println(Book.bookList[0].price);
     }
 }

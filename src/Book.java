@@ -5,8 +5,8 @@ public class Book {
     String name;
     float price;
     String author;
-//    static Book[] bookList = new Book[100] ;
-//    static int listIndex = 0;
+    static Book[] bookList = new Book[100] ;
+    static int listIndex = 0;
 
     public String getBookCode() {
         return bookCode;
@@ -48,13 +48,13 @@ public class Book {
         this.name = name;
         this.price = price;
         this.author = author;
-//        addBook(this);
+        addBook(this);
     }
 
-//    public void addBook(Book book) {
-//        if(listIndex < bookList.length){
-//            bookList[listIndex] = book;
-//            listIndex++;
-//        }
-//    }
+    public void addBook(Book book) {
+        if(listIndex < bookList.length){
+            bookList[listIndex] = book;
+            listIndex++;
+        }
+    }
 }
