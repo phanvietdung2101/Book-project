@@ -40,6 +40,6 @@ public class Main {
 
         System.out.println("Tong so sach viet ve Java la " + countJavaBook);
 
-        System.out.println(Book.bookList[0].price);
+//        System.out.println(Book.bookList[0].price);
     }
 }
