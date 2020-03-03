@@ -1,11 +1,11 @@
-import jdk.dynalink.beans.StaticClass;
+import java.util.ArrayList;
 
 public class Book {
     String bookCode;
     String name;
     float price;
     String author;
-    static Book[] bookList = new Book[100] ;
+    static ArrayList<Book> bookList = new ArrayList<>() ;
     static int listIndex = 0;
 
     public String getBookCode() {
@@ -52,9 +52,6 @@ public class Book {
     }
 
     public void addBook(Book book) {
-        if(listIndex < bookList.length){
-            bookList[listIndex] = book;
-            listIndex++;
-        }
+        bookList.add(book);
     }
 }
