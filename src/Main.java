@@ -10,26 +10,15 @@ public class Main {
         FictionBook book5 = new FictionBook("4","Một thế giới dũng cảm", 35, "Aldous Huxley", "Khoa học viễn tưởng");
         FictionBook book6 = new FictionBook("6", "Kiêu hãnh và định kiến", 32, "Jane Austen","Tiểu thuyết lãng mạng");
 
-        float totalPrice = 0;
-
+        System.out.println("Book list");
         for (Book book : Book.bookList) {
-            totalPrice += book.price;
+            System.out.println(book.toString());
         }
-        System.out.println("Tong gia tien tat ca sach la: " + totalPrice);
-
-        int countJavaBook = 0;
-
-        for(int i = 0; i < Book.listIndex; i++){
-            boolean isProgramBook = Book.bookList.get(i) instanceof ProgrammingBook;
-            if(isProgramBook){
-                boolean isJavaBook = ((ProgrammingBook) Book.bookList.get(i)).language.equals("Java");
-                if(isJavaBook)
-                    countJavaBook++;
-            }
+        System.out.println("After sort by price");
+        selectionSortByPrice(Book.bookList);
+        for (Book book : Book.bookList) {
+            System.out.println(book.toString());
         }
-
-        System.out.println("Tong so sach viet ve Java la " + countJavaBook);
-
     }
 
     public static float getPriceByBookName(String name){
@@ -41,6 +30,51 @@ public class Main {
         return -1;
     }
 
+    public static void bubbleSortByPrice(ArrayList<Book> bookList){
+        boolean swapped = true;
+        for(int i = 0; i < bookList.size() && swapped;i++){
+            swapped = false;
+            for(int j = 0; j < (bookList.size() - i - 1); j++){
+                if(bookList.get(j).price > bookList.get(j+1).price){
+                    Book temp = bookList.get(j);
+                    bookList.set(j,bookList.get(j+1));
+                    bookList.set(j+1,temp);
+                    swapped = true;
+                }
+            }
+        }
+    }
 
+    public static void insertionSortByPrice(ArrayList<Book> bookList){
+        for(int i = 1; i < bookList.size(); i++){
+            Book book = bookList.get(i);
+            float value = book.price;
+            int j = i - 1;
+            while(j >= 0 && (bookList.get(j).price > value)){
+                bookList.set(j+1,bookList.get(j));
+                j--;
+            }
+            bookList.set(j+1,book);
+        }
+    }
+
+    public static void selectionSortByPrice(ArrayList<Book> bookList){
+        for(int i = 0; i < bookList.size() - 1; i++){
+            Book currentBook = bookList.get(i);
+            float currentMinPrice = currentBook.price;
+            int currentIndex = i;
+            for(int j = i+1; j < bookList.size(); j++){
+                if(bookList.get(j).price < currentMinPrice){
+                    currentBook = bookList.get(j);
+                    currentMinPrice = currentBook.price;
+                    currentIndex = j;
+                }
+            }
+            if(currentIndex != i){
+                bookList.set(currentIndex,bookList.get(i));
+                bookList.set(i,currentBook);
+            }
+        }
+    }
 
 }

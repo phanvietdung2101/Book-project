@@ -51,7 +51,12 @@ public class Book {
         addBook(this);
     }
 
-    public void addBook(Book book) {
+    public static void addBook(Book book) {
         bookList.add(book);
+    }
+
+    @Override
+    public String toString() {
+        return this.bookCode + "---" + this.name + "---" + this.author + "---" + this.price;
     }
 }
