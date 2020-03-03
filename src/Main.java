@@ -19,6 +19,12 @@ public class Main {
         for (Book book : Book.bookList) {
             System.out.println(book.toString());
         }
+        System.out.println("After sort by name");
+        insertionSortByName(Book.bookList);
+        for (Book book : Book.bookList) {
+            System.out.println(book.toString());
+        }
+        System.out.println("Price of The Hand Maid's Tale is " + getPriceWithBinarySearch("The Hand Maid's Tale",Book.bookList));
     }
 
     public static float getPriceByBookName(String name){
@@ -77,4 +83,31 @@ public class Main {
         }
     }
 
+    public static void insertionSortByName(ArrayList<Book> bookList){
+        for(int i = 1; i < bookList.size(); i++){
+            Book book = bookList.get(i);
+            String name = book.name;
+            int j = i - 1;
+            while(j >= 0 && (bookList.get(j).name.compareTo(name) > 0)){
+                bookList.set(j + 1,bookList.get(j));
+                j--;
+            }
+            bookList.set(j+1,book);
+        }
+    }
+
+    public static float getPriceWithBinarySearch(String inputName, ArrayList<Book> bookList){
+        int low = 0;
+        int high = bookList.size() - 1;
+        while(high >= low){
+            int mid = (high + low) / 2;
+            if(bookList.get(mid).name.compareTo(inputName) > 0){
+                high = mid - 1;
+            } else if(bookList.get(mid).name.compareTo(inputName) < 0){
+                low = mid + 1;
+            } else
+                return bookList.get(mid).price;
+        }
+        return -1;
+    }
 }
