@@ -2,35 +2,26 @@
 public class Main {
     public static void main(String[] args) {
 
-        ProgrammingBook book1 = new ProgrammingBook("PB0001","Thinking in Java",30,"Bruce Eckel","Java", "");
-        ProgrammingBook book2 = new ProgrammingBook("PB0002","Java: A beginner's Guide", 20,"Herbert Schildt", "Java", "");
-        ProgrammingBook book3 = new ProgrammingBook("PB0003","C, the compelete reference", 40,"Herbert Schildt", "C","");
-        FictionBook book4 = new FictionBook("FB0001","The Hand Maid's Tale",25, "Margaret Atwood","Giả tưởng suy đoán");
-        FictionBook book5 = new FictionBook("FB0002","Một thế giới dũng cảm", 35, "Aldous Huxley", "Khoa học viễn tưởng");
-        FictionBook book6 = new FictionBook("FB0003", "Kiêu hãnh và định kiến", 32, "Jane Austen","Tiểu thuyết lãng mạng");
-
-//        BookManager bookManager = new BookManager();
-//        bookManager.add(book1);
-//        bookManager.add(book2);
-//        bookManager.add(book3);
-//        bookManager.add(book4);
-//        bookManager.add(book5);
-//        bookManager.add(book6);
+        ProgrammingBook book1 = new ProgrammingBook("1","Thinking in Java",30,"Bruce Eckel","Java", "");
+        ProgrammingBook book2 = new ProgrammingBook("3","Java: A beginner's Guide", 20,"Herbert Schildt", "Java", "");
+        ProgrammingBook book3 = new ProgrammingBook("5","C, the compelete reference", 40,"Herbert Schildt", "C","");
+        FictionBook book4 = new FictionBook("2","The Hand Maid's Tale",25, "Margaret Atwood","Giả tưởng suy đoán");
+        FictionBook book5 = new FictionBook("4","Một thế giới dũng cảm", 35, "Aldous Huxley", "Khoa học viễn tưởng");
+        FictionBook book6 = new FictionBook("6", "Kiêu hãnh và định kiến", 32, "Jane Austen","Tiểu thuyết lãng mạng");
 
         float totalPrice = 0;
 
-        for(int i = 0; i < Book.listIndex ;i++){
-            totalPrice += Book.bookList[i].price ;
+        for (Book book : Book.bookList) {
+            totalPrice += book.price;
         }
-
         System.out.println("Tong gia tien tat ca sach la: " + totalPrice);
 
         int countJavaBook = 0;
 
         for(int i = 0; i < Book.listIndex; i++){
-            boolean isProgramBook = Book.bookList[i] instanceof ProgrammingBook;
+            boolean isProgramBook = Book.bookList.get(i) instanceof ProgrammingBook;
             if(isProgramBook){
-                boolean isJavaBook = ((ProgrammingBook) Book.bookList[i]).language.equals("Java");
+                boolean isJavaBook = ((ProgrammingBook) Book.bookList.get(i)).language.equals("Java");
                 if(isJavaBook)
                     countJavaBook++;
             }
@@ -38,6 +29,5 @@ public class Main {
 
         System.out.println("Tong so sach viet ve Java la " + countJavaBook);
 
-        System.out.println(Book.bookList[0].price);
     }
 }
