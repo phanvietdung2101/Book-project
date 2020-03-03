@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -30,4 +31,16 @@ public class Main {
         System.out.println("Tong so sach viet ve Java la " + countJavaBook);
 
     }
+
+    public static float getPriceByBookName(String name){
+        for (Book book : Book.bookList) {
+            if(book.name.equals(name)){
+                return book.price;
+            }
+        }
+        return -1;
+    }
+
+
+
 }
